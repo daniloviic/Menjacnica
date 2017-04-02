@@ -13,6 +13,7 @@ public class Valuta {
 	}
 
 	public void setNaziv(String naziv) {
+		if(naziv !=null)
 		this.naziv = naziv;
 	}
 
@@ -21,6 +22,7 @@ public class Valuta {
 	}
 
 	public void setSkraceniNaziv(String skraceniNaziv) {
+		if(skraceniNaziv!=null)
 		this.skraceniNaziv = skraceniNaziv;
 	}
 
@@ -29,6 +31,7 @@ public class Valuta {
 	}
 
 	public void setKupovni(double kupovni) {
+		if(kupovni > 0)
 		this.kupovni = kupovni;
 	}
 
@@ -37,6 +40,7 @@ public class Valuta {
 	}
 
 	public void setProdajni(double prodajni) {
+		if(prodajni > 0)
 		this.prodajni = prodajni;
 	}
 
@@ -45,6 +49,7 @@ public class Valuta {
 	}
 
 	public void setSrednji(double srednji) {
+		if(srednji > 0)
 		this.srednji = srednji;
 	}
 
@@ -53,6 +58,7 @@ public class Valuta {
 	}
 
 	public void setDatum(GregorianCalendar datum) {
+		if(datum.after(new GregorianCalendar()))
 		this.datum = datum;
 	}
 
