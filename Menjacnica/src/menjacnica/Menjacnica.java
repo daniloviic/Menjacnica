@@ -6,23 +6,24 @@ import java.util.LinkedList;
 import menjacnicaInterfejs.MenjacnicaInterfejs;
 
 public class Menjacnica implements MenjacnicaInterfejs{
+
 	private LinkedList<Valuta> kursnaLista = new LinkedList<Valuta>();
 	@Override
 	public void dodajKurs(Valuta valuta, double prodajni, double kupovni, double srednji, GregorianCalendar datum) {
-		
-		valuta.setKupovni(kupovni);
+
 		valuta.setProdajni(prodajni);
+		valuta.setKupovni(kupovni);
 		valuta.setSrednji(srednji);
 		valuta.setDatum(datum);
 		
-		kursnaLista.addLast(valuta);
-		
+		kursnaLista.add(valuta);
 	}
 
 	@Override
 	public void obrisiKurs(Valuta valuta, GregorianCalendar datum) {
+		valuta.setDatum(datum);
 		for (int i = 0; i < kursnaLista.size(); i++) {
-			if(kursnaLista.get(i).getNaziv().equals(valuta.getNaziv()) && kursnaLista.get(i).getDatum()==datum){
+			if(kursnaLista.get(i).equals(valuta)){
 				kursnaLista.remove(i);
 				return;
 			}
@@ -32,8 +33,9 @@ public class Menjacnica implements MenjacnicaInterfejs{
 
 	@Override
 	public double vratiKurs(Valuta valuta, GregorianCalendar datum) {
+		valuta.setDatum(datum);
 		for (int i = 0; i < kursnaLista.size(); i++) {
-			if(kursnaLista.get(i).getNaziv().equals(valuta.getNaziv()) && kursnaLista.get(i).getDatum()==datum){
+			if(kursnaLista.get(i).equals(valuta)){
 				return kursnaLista.get(i).getSrednji();
 			}
 		}
